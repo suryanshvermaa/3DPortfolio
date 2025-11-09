@@ -13,58 +13,16 @@ const services = [
 ];
 
 const technologies = [
-	{
-		name: "HTML 5",
-		icon: "/tech/html.webp",
-	},
-	{
-		name: "CSS 3",
-		icon: "/tech/css.webp",
-	},
-	{
-		name: "JavaScript",
-		icon: "/tech/javascript.webp",
-	},
-	{
-		name: "TypeScript",
-		icon: "/tech/typescript.webp",
-	},
-	{
-		name: "React JS",
-		icon: "/tech/reactjs.webp",
-	},
-	{
-		name: "Next.JS",
-		icon: "/tech/nextjs.svg",
-	},
-	{
-		name: "Redux Toolkit",
-		icon: "/tech/redux.webp",
-	},
-	{
-		name: "Tailwind CSS",
-		icon: "/tech/tailwind.webp",
-	},
-	{
-		name: "Three JS",
-		icon: "/tech/threejs.webp",
-	},
-	{
-		name: "git",
-		icon: "/tech/git.webp",
-	},
-	{
-		name: "figma",
-		icon: "/tech/figma.webp",
-	},
-	{
-		name: "wordpress",
-		icon: "/tech/wordpress.webp",
-	},
-	{
-		name: "bootstrap",
-		icon: "/tech/bootstrap.webp",
-	},
+	{ name: "JavaScript", icon: "/tech/javascript.webp" },
+	{ name: "TypeScript", icon: "/tech/typescript.webp" },
+	{ name: "React", icon: "/tech/reactjs.webp" },
+	{ name: "Next.js", icon: "/tech/nextjs.svg" },
+	{ name: "Redux", icon: "/tech/redux.webp" },
+	{ name: "TailwindCSS", icon: "/tech/tailwind.webp" },
+	{ name: "Three.js", icon: "/tech/threejs.webp" },
+	{ name: "Git", icon: "/tech/git.webp" },
+	{ name: "GitHub", icon: "/tech/github.webp" },
+	{ name: "Figma", icon: "/tech/figma.webp" },
 ];
 
 const experiences = [
@@ -83,7 +41,7 @@ const experiences = [
 	{
 		title: "SCS Cloud Platform (Personal Project)",
 		company_name: "SCS Cloud Platform Project",
-		icon: "/projectimg/issuetracker.png",
+		icon: "/projectimg/scsCloud.png",
 		iconBg: "#E6DEDD",
 		date: "2024 – Present",
 		points: [
@@ -146,94 +104,155 @@ const projects :{
 }[] = [
 	{
 		name: "SCS Cloud Platform",
-		description: "Cloud-native platform for HLS transcoding, static hosting & object storage with Kubernetes-ready deployment & AI assistant integration.",
+		description: "Cloud-native platform with HLS transcoding, static hosting, object storage and K8s-ready deployment.",
 		tags: [
 			{ name: "nodejs", color: "blue-text-gradient" },
 			{ name: "docker", color: "green-text-gradient" },
 			{ name: "kubernetes", color: "orange-text-gradient" },
 			{ name: "aws", color: "pink-text-gradient" },
 		],
-		image: "/projectimg/mern.png",
+		image: "/projectimg/scsCloud.png",
 		source_code_link: "https://github.com/suryanshvermaa/scsCloud",
 		platform: "Web",
 		deploy_link: "https://github.com/suryanshvermaa/scsCloud",
 	},
 	{
 		name: "Event Management App",
-		description: "Mobile-first event platform with OTP + JWT auth & fast search for discovering and managing events.",
+		description: "Mobile-first app built with React Native + Express, featuring OTP/JWT authentication and fast search.",
 		tags: [
-			{ name: "react", color: "blue-text-gradient" },
+			{ name: "react-native", color: "blue-text-gradient" },
 			{ name: "express", color: "orange-text-gradient" },
 			{ name: "mongodb", color: "green-text-gradient" },
 		],
-		image: "/projectimg/sparkbright.png",
+		image: "/projectimg/event-management.svg",
 		source_code_link: "https://github.com/suryanshvermaa/eventManagementApp",
 		platform: "Web",
 		deploy_link: "https://github.com/suryanshvermaa/eventManagementApp",
 	},
 	{
 		name: "Hackslash Official Website",
-		description: "Fast, animated community website boosting engagement & navigation performance using Next.js + Tailwind + Framer Motion.",
+		description: "Community website built with Next.js and TailwindCSS, featuring animations powered by Framer Motion.",
 		tags: [
 			{ name: "nextjs", color: "blue-text-gradient" },
 			{ name: "tailwind", color: "green-text-gradient" },
 			{ name: "framer-motion", color: "orange-text-gradient" },
 		],
-		image: "/projectimg/metaverse.png",
+		image: "/projectimg/hackslash.png",
+		source_code_link: "https://github.com/HackSlashNITP/hackslash-official-site",
 		platform: "Vercel",
 		deploy_link: "https://hackslashnitp.vercel.app",
 	},
 	{
 		name: "Two-Tier Node.js Deployment",
-		description: "Highly scalable two-tier Node.js + MongoDB service on AWS EKS with Jenkins CI/CD & ArgoCD GitOps.",
+		description: "Scalable Node.js + MongoDB stack on AWS EKS with Jenkins CI/CD and ArgoCD.",
 		tags: [
 			{ name: "kubernetes", color: "orange-text-gradient" },
 			{ name: "docker", color: "green-text-gradient" },
 			{ name: "aws", color: "blue-text-gradient" },
 		],
-		image: "/projectimg/issuetracker.png",
+		image: "/projectimg/two-tier.svg",
 		source_code_link: "https://github.com/suryanshvermaa/Two-Tier-Nodejs-MongoDb-App-deployment",
 		platform: "Web",
 		deploy_link: "https://github.com/suryanshvermaa/Two-Tier-Nodejs-MongoDb-App-deployment",
 	},
 	{
 		name: "create-express-mongo-prod",
-		description: "CLI scaffolder for production-ready Express.js apps with Docker, ESLint, Prettier & Mongo integration (300+ downloads).",
+		description: "CLI to scaffold production-grade Express + Mongo apps with Docker, ESLint, and Prettier.",
 		tags: [
 			{ name: "npm", color: "pink-text-gradient" },
 			{ name: "express", color: "orange-text-gradient" },
 			{ name: "docker", color: "green-text-gradient" },
 		],
-		image: "/projectimg/hoobank.webp",
+		image: "/projectimg/create-express-mongo-prod.svg",
 		source_code_link: "https://github.com/suryanshvermaa/create-express-mongo-prod",
 		platform: "Web",
 		deploy_link: "https://www.npmjs.com/package/create-express-mongo-prod",
 	},
 	{
 		name: "My Drogon App (C++)",
-		description: "Modern C++ web app with Drogon + PostgreSQL featuring JWT auth, modular middleware & Kubernetes/Jenkins deployment.",
+		description: "C++ web app using Drogon + PostgreSQL with JWT auth and modular middleware.",
 		tags: [
 			{ name: "cpp", color: "blue-text-gradient" },
 			{ name: "postgresql", color: "green-text-gradient" },
 			{ name: "jwt", color: "orange-text-gradient" },
 		],
-		image: "/projectimg/avm.webp",
+		image: "/projectimg/drogonCpp.png",
 		source_code_link: "https://github.com/suryanshvermaa/my-fastest-drogon-app-cpp",
 		platform: "Web",
 		deploy_link: "https://github.com/suryanshvermaa/my-fastest-drogon-app-cpp",
 	},
 	{
 		name: "jwt-auth-pack",
-		description: "Lightweight JWT middleware for Express + TypeScript delivering fast token validation & plug-and-play setup.",
+		description: "Lightweight JWT middleware for Express and TypeScript with a simple API and fast validation.",
 		tags: [
 			{ name: "express", color: "orange-text-gradient" },
 			{ name: "typescript", color: "blue-text-gradient" },
 			{ name: "jwt", color: "pink-text-gradient" },
 		],
-		image: "/projectimg/sparkbright.png",
+		image: "/projectimg/jwt-auth-pack.svg",
 		source_code_link: "https://github.com/suryanshvermaa/jwt-auth-pack",
 		platform: "Web",
 		deploy_link: "https://www.npmjs.com/package/jwt-auth-pack",
+	},
+	{
+		name: "NEXT-GENERATION-ADAPTIVE-SYSTEM-LAB (NASL)",
+		description: "Full‑stack lab platform: static site + Express TS API with PostgreSQL, Prisma and S3 storage.",
+		tags: [
+			{ name: "express", color: "orange-text-gradient" },
+			{ name: "typescript", color: "blue-text-gradient" },
+			{ name: "postgresql", color: "green-text-gradient" },
+			{ name: "prisma", color: "pink-text-gradient" },
+			{ name: "s3", color: "blue-text-gradient" },
+			{ name: "docker", color: "green-text-gradient" },
+		],
+		image: "/projectimg/nasl-lab.png",
+		source_code_link: "https://github.com/suryanshvermaa/NEXT-GENERATION-ADAPTIVE-SYSTEM-LAB-NASL-",
+		platform: "Web",
+		deploy_link: "https://lab.nasl.in",
+	},
+	{
+		name: "Conference Website",
+		description: "Full‑stack conference platform: React + Vite frontend and Node.js API with MongoDB.",
+		tags: [
+			{ name: "react", color: "blue-text-gradient" },
+			{ name: "express", color: "orange-text-gradient" },
+			{ name: "mongodb", color: "green-text-gradient" },
+			{ name: "vite", color: "pink-text-gradient" },
+		],
+		image: "/projectimg/conferenceWebsite.png",
+		source_code_link: "https://github.com/suryanshvermaa/Conference_website",
+		platform: "Vercel",
+		deploy_link: "https://icnari26.nasl.in",
+	},
+	{
+		name: "Byteverse Hackathon",
+		description: "Hackathon site for Byteverse 2025: Next.js, TailwindCSS, animations & contributor-friendly structure.",
+		tags: [
+			{ name: "nextjs", color: "blue-text-gradient" },
+			{ name: "tailwind", color: "green-text-gradient" },
+			{ name: "framer-motion", color: "orange-text-gradient" },
+			{ name: "hackathon", color: "pink-text-gradient" },
+		],
+		image: "/projectimg/ByteverseHackathon.png",
+		source_code_link: "https://github.com/HackSlashNITP/Byteverse-25",
+		platform: "Vercel",
+		deploy_link: "https://byteverse2k25.vercel.app/",
+	},
+	{
+		name: "Go Microservices E-commerce",
+		description: "Go microservices e‑commerce: account, catalog (Elasticsearch), orders and a GraphQL gateway over gRPC.",
+		tags: [
+			{ name: "go", color: "blue-text-gradient" },
+			{ name: "grpc", color: "orange-text-gradient" },
+			{ name: "graphql", color: "pink-text-gradient" },
+			{ name: "postgresql", color: "green-text-gradient" },
+			{ name: "elasticsearch", color: "blue-text-gradient" },
+			{ name: "docker", color: "green-text-gradient" },
+		],
+		image: "/projectimg/go-microservices.svg",
+		source_code_link: "https://github.com/suryanshvermaa/microservices",
+		platform: "Web",
+		deploy_link: "https://github.com/suryanshvermaa/microservices",
 	},
 ];
 
