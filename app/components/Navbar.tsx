@@ -43,12 +43,12 @@ const Navbar = () => {
 				>
 					<Link href="https://github.com/suryanshvermaa">
 						<Image
-							src="/logo.png"
-							width={80}
-							height={80}
-							alt="logo"
+							src="https://avatars.githubusercontent.com/u/154125921"
+							width={64}
+							height={64}
+							alt="Suryansh Verma avatar"
 							priority
-							className="object-contain"
+							className="object-cover rounded-full ring-2 ring-[#915EFF]"
 						/>
 					</Link>
 					<p className="text-white text-[18px] font-bold cursor-pointer flex">

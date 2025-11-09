@@ -13,23 +13,119 @@ const services = [
 ];
 
 const technologies = [
-	{ name: "JavaScript", icon: "/tech/javascript.webp" },
-	{ name: "TypeScript", icon: "/tech/typescript.webp" },
-	{ name: "React", icon: "/tech/reactjs.webp" },
-	{ name: "Next.js", icon: "/tech/nextjs.svg" },
-	{ name: "Redux", icon: "/tech/redux.webp" },
-	{ name: "TailwindCSS", icon: "/tech/tailwind.webp" },
-	{ name: "Three.js", icon: "/tech/threejs.webp" },
-	{ name: "Git", icon: "/tech/git.webp" },
+	// Languages
+	{ name: "JavaScript", icon: "/tech/JavaScript.svg" },
+	{ name: "TypeScript", icon: "/tech/TypeScript.svg" },
+	{ name: "Go", icon: "/tech/Go.svg" },
+	{ name: "Python", icon: "/tech/Python.svg" },
+	{ name: "Java", icon: "/tech/Java.svg" },
+	{ name: "C", icon: "/tech/C.svg" },
+	{ name: "C++", icon: "/tech/C++(CPlusPlus).svg" },
+
+	// Frontend
+	{ name: "React", icon: "/tech/React.svg" },
+	{ name: "Next.js", icon: "/tech/Next.js.svg" },
+	{ name: "HTML5", icon: "/tech/HTML5.svg" },
+	{ name: "CSS3", icon: "/tech/CSS3.svg" },
+	// removed Three.js by request
+
+	// Backend & APIs
+	{ name: "Node.js", icon: "/tech/Node.js.svg" },
+	{ name: "Express", icon: "/tech/Express.png" },
+	{ name: "GraphQL", icon: "/tech/GraphQL.svg" },
+	{ name: "Apache Kafka", icon: "/tech/Apache_Kafka.svg" },
+
+	// Databases & Caches
+	{ name: "MongoDB", icon: "/tech/MongoDB.svg" },
+	{ name: "PostgreSQL", icon: "/tech/PostgresSQL.svg" },
+	{ name: "Redis", icon: "/tech/Redis.svg" },
+
+	// Cloud & DevOps
+	{ name: "Docker", icon: "/tech/Docker.svg" },
+	{ name: "Kubernetes", icon: "/tech/Kubernetes.svg" },
+	{ name: "AWS", icon: "/tech/AWS.svg" },
+	{ name: "Google Cloud", icon: "/tech/Google_Cloud.svg" },
+	{ name: "Jenkins", icon: "/tech/Jenkins.svg" },
+	{ name: "Argo CD", icon: "/tech/Argo_CD.svg" },
+
+	// Tools/Platforms
+	{ name: "Firebase", icon: "/tech/Firebase.svg" },
 	{ name: "GitHub", icon: "/tech/github.webp" },
-	{ name: "Figma", icon: "/tech/figma.webp" },
+	{ name: "Vercel", icon: "/tech/vercel.svg" },
+	{ name: "Netlify", icon: "/tech/netlify.webp" },
+];
+
+// Grouped skills for consistent UI rendering
+const technologyGroups: {
+	title: string;
+	items: { name: string; icon: string }[];
+}[] = [
+	{
+		title: "Languages",
+		items: [
+			{ name: "JavaScript", icon: "/tech/JavaScript.svg" },
+			{ name: "TypeScript", icon: "/tech/TypeScript.svg" },
+			{ name: "Go", icon: "/tech/Go.svg" },
+			{ name: "Python", icon: "/tech/Python.svg" },
+			{ name: "Java", icon: "/tech/Java.svg" },
+			{ name: "C", icon: "/tech/C.svg" },
+			{ name: "C++", icon: "/tech/C++(CPlusPlus).svg" },
+		],
+	},
+	{
+		title: "Frontend",
+		items: [
+			{ name: "React", icon: "/tech/React.svg" },
+			{ name: "Next.js", icon: "/tech/Next.js.svg" },
+			{ name: "HTML5", icon: "/tech/HTML5.svg" },
+			{ name: "CSS3", icon: "/tech/CSS3.svg" },
+				// removed Three.js by request
+		],
+	},
+	{
+		title: "Backend & Messaging",
+		items: [
+			{ name: "Node.js", icon: "/tech/Node.js.svg" },
+			{ name: "Express", icon: "/tech/Express.png" },
+			{ name: "GraphQL", icon: "/tech/GraphQL.svg" },
+			{ name: "Apache Kafka", icon: "/tech/Apache_Kafka.svg" },
+		],
+	},
+	{
+		title: "Databases & Cache",
+		items: [
+			{ name: "MongoDB", icon: "/tech/MongoDB.svg" },
+			{ name: "PostgreSQL", icon: "/tech/PostgresSQL.svg" },
+			{ name: "Redis", icon: "/tech/Redis.svg" },
+		],
+	},
+	{
+		title: "Cloud & DevOps",
+		items: [
+			{ name: "Docker", icon: "/tech/Docker.svg" },
+			{ name: "Kubernetes", icon: "/tech/Kubernetes.svg" },
+			{ name: "AWS", icon: "/tech/AWS.svg" },
+			{ name: "Google Cloud", icon: "/tech/Google_Cloud.svg" },
+			{ name: "Jenkins", icon: "/tech/Jenkins.svg" },
+			{ name: "Argo CD", icon: "/tech/Argo_CD.svg" },
+		],
+	},
+	{
+		title: "Tools & Platforms",
+		items: [
+			{ name: "Firebase", icon: "/tech/Firebase.svg" },
+			{ name: "GitHub", icon: "/tech/github.webp" },
+			{ name: "Vercel", icon: "/tech/vercel.svg" },
+			{ name: "Netlify", icon: "/tech/netlify.webp" },
+		],
+	},
 ];
 
 const experiences = [
 	{
 		title: "B.Tech Electrical Engineering",
 		company_name: "NIT Patna",
-		icon: "/projectimg/mern.png",
+		icon: "/projectimg/placeholder.svg",
 		iconBg: "#383E56",
 		date: "2023 – 2027",
 		points: [
@@ -256,4 +352,4 @@ const projects :{
 	},
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, technologies, technologyGroups, experiences, testimonials, projects };

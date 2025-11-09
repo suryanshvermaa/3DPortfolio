@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
+import Image from "next/image";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
@@ -12,12 +13,24 @@ const Hero = () => {
 					<div className="w-1 sm:h-80 h-40 violet-gradient" />
 				</div>
 				<div>
-					<h1 className="heroHeadText text-white">
-						Hi, I&apos;m <span className="text-[#915EFF] ">Suryansh Verma</span>
-					</h1>
-					<p className="heroSubText">
-						Full-Stack Developer | Cloud & DevOps Engineer
-					</p>
+					<div className="flex items-center gap-6 flex-wrap">
+						<Image
+							src="https://avatars.githubusercontent.com/u/154125921"
+							alt="Suryansh Verma"
+							width={96}
+							height={96}
+							priority
+							className="rounded-full ring-2 ring-[#915EFF] shadow-lg shadow-[#915EFF]/40"
+						/>
+						<div>
+							<h1 className="heroHeadText text-white leading-tight">
+								Hi, I&apos;m <span className="text-[#915EFF] ">Suryansh Verma</span>
+							</h1>
+							<p className="heroSubText mt-2">
+								Full-Stack Developer · Cloud & DevOps Engineer
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<ComputersCanvas />
