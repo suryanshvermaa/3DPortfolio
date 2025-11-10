@@ -3,8 +3,8 @@ import { transporter } from "../config";
 
 async function sendMailToMe(email:string,subject:string,message:string, name:string){
     await transporter.sendMail({
-        from:'suryanshverma.nitp@gmail.com',
-        to:'suryanshverma.nitp@gmail.com',
+        from: process.env.MY_EMAIL!,
+        to:process.env.MY_EMAIL!,
         subject,
         html:`
         <!DOCTYPE html>
@@ -95,7 +95,7 @@ async function sendMailToMe(email:string,subject:string,message:string, name:str
 
 async function sendMailToSender(senderEmail:string,subject:string, name:string){
     await transporter.sendMail({
-        from:'suryanshverma.nitp@gmail.com',
+        from:process.env.MY_EMAIL!,
         to:senderEmail,
         subject,
         html:`
@@ -115,7 +115,9 @@ async function sendMailToSender(senderEmail:string,subject:string, name:string){
                             <tr>
                                 <td style="background: linear-gradient(135deg, #915eff 0%, #6b46c1 100%); padding: 40px; text-align: center;">
                                     <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
-                                        <span style="font-size: 40px;">✓</span>
+                                        <div style="width: 80px; height: 80px; border-radius: 50%; display: table; text-align: center;">
+                                            <span style="display: table-cell; vertical-align: middle; font-size: 40px; line-height: 80px; color: #ffffff;">✓</span>
+                                        </div>
                                     </div>
                                     <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: bold; text-shadow: 0 2px 8px rgba(0,0,0,0.2);">
                                         Thank You!

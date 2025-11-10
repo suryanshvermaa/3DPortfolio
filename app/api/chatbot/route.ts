@@ -17,8 +17,11 @@ import { NextRequest,NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
     try {
         let { message, sessionId} = await req.json();
-        if (!message || !sessionId) throw new Error("message and sessionId both required");
-        const prevSession=await getSession(sessionId);
+        if (!message || !sessionId) {
+            return NextResponse.json({ error: "message and sessionId both required" }, { status: 400 });
+        }
+        
+        const prevSession = await getSession(sessionId);
         if(!prevSession){
             const startingMessage:Groq.Chat.Completions.ChatCompletionMessageParam[]=[
                 {
@@ -34,14 +37,19 @@ export async function POST(req: NextRequest) {
                 messages:startingMessage
             });
         }
-        const session=await getSession(sessionId); 
-        session?.messages.push({
+        
+        const session = await getSession(sessionId);
+        if (!session) {
+            return NextResponse.json({ error: "Failed to create session" }, { status: 500 });
+        }
+        
+        session.messages.push({
             role: "user",
             content: message
         })
-        let aiRes=(await getGroqChatCompletion(session!.messages)).choices[0].message;
+        let aiRes=(await getGroqChatCompletion(session.messages)).choices[0].message;
         let toolCalls=aiRes.tool_calls;
-        session!.messages.push(aiRes);
+        session.messages.push(aiRes);
     
         let count=0;
         while(toolCalls&&toolCalls.length!=0){
@@ -50,20 +58,29 @@ export async function POST(req: NextRequest) {
             for (const toolCall of toolCalls) {
                 const functionName = toolCall.function.name;
                 const functionToCall = availableFunctions[functionName];
+                if (!functionToCall) {
+                    console.error(`Function ${functionName} not found`);
+                    continue;
+                }
                 const functionResponse = functionToCall();
-                session!.messages.push({
+                session.messages.push({
                     tool_call_id: toolCall.id,
                     role: "tool",
                     content: functionResponse,
                 });
             }
-            aiRes=(await getGroqChatCompletion(session!.messages)).choices[0].message
+            aiRes=(await getGroqChatCompletion(session.messages)).choices[0].message
             toolCalls=aiRes.tool_calls 
-            session!.messages.push(aiRes);
+            session.messages.push(aiRes);
             if(aiRes.content) break;
         }
+        
+        // Save updated session
+        await setSession(sessionId, session);
+        
         return NextResponse.json({response: aiRes.content}, {status: 200});
     } catch (error) {
+        console.error("Error in chatbot POST handler:", error);
         return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     }
 }
