@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Message {
 	id: string;
@@ -150,7 +152,36 @@ const Chatbot = () => {
 												: "bg-[#1d1836] text-white border border-white/10"
 										}`}
 									>
-										<p className="text-sm">{message.text}</p>
+										{message.sender === "bot" ? (
+											<div className="text-sm prose prose-invert prose-sm max-w-none">
+												<ReactMarkdown
+													remarkPlugins={[remarkGfm]}
+													components={{
+														p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+														ul: ({ node, ...props }) => <ul className="list-disc ml-4 mb-2" {...props} />,
+														ol: ({ node, ...props }) => <ol className="list-decimal ml-4 mb-2" {...props} />,
+														li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+														strong: ({ node, ...props }) => <strong className="font-bold text-[#915EFF]" {...props} />,
+														code: ({ node, inline, ...props }: any) =>
+															inline ? (
+																<code className="bg-black/30 px-1.5 py-0.5 rounded text-xs" {...props} />
+															) : (
+																<code className="block bg-black/30 p-2 rounded my-2 text-xs overflow-x-auto" {...props} />
+															),
+														a: ({ node, ...props }) => (
+															<a className="text-[#915EFF] hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
+														),
+														h1: ({ node, ...props }) => <h1 className="text-lg font-bold mb-2" {...props} />,
+														h2: ({ node, ...props }) => <h2 className="text-base font-bold mb-2" {...props} />,
+														h3: ({ node, ...props }) => <h3 className="text-sm font-bold mb-1" {...props} />,
+													}}
+												>
+													{message.text}
+												</ReactMarkdown>
+											</div>
+										) : (
+											<p className="text-sm">{message.text}</p>
+										)}
 										<p className="text-xs opacity-60 mt-1">
 											{message.timestamp.toLocaleTimeString([], {
 												hour: "2-digit",

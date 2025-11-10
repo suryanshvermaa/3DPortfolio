@@ -29,7 +29,7 @@ export async function setSession(sessionId: string, data: IChat): Promise<void> 
     const sessionData = {
       messages: data.messages
     };
-    await redis.set(sessionId, JSON.stringify(sessionData));
+    await redis.set(sessionId, JSON.stringify(sessionData),{ ex: 60 * 60 }); // Set expiration to 1 hour
   } catch (error) {
     console.error('Error setting session:', error);
     throw error;
