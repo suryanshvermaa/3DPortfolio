@@ -8,6 +8,7 @@ import {
 	Tech,
 	Works,
 	StarsCanvas,
+	Stats,
 } from "./components";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
 			<Experience />
 			<Tech />
 			<Works />
+			<Stats />
 			<Feedbacks />
 			<div className="relative z-0">
 				<Contact />
