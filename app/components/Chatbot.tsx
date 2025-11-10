@@ -21,6 +21,7 @@ const Chatbot = () => {
 	]);
 	const [inputMessage, setInputMessage] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	const [sessionId] = useState(() => `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 
 	const scrollToBottom = () => {
@@ -52,7 +53,10 @@ const Chatbot = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ message: inputMessage }),
+				body: JSON.stringify({ 
+					message: inputMessage,
+					sessionId: sessionId 
+				}),
 			});
 
 			const data = await response.json();
