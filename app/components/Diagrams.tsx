@@ -1,0 +1,198 @@
+"use client";
+import { SectionWrapper } from "@/app/components/HigherOrderComponents";
+import { textVariant, fadeIn } from "@/app/utils/motion";
+import { motion } from "framer-motion";
+import React, { useState } from "react";
+import Tilt from "react-parallax-tilt";
+
+interface Diagram {
+	id: string;
+	title: string;
+	description: string;
+	image: string;
+	project: string;
+	tags: string[];
+}
+
+const diagrams: Diagram[] = [
+	{
+		id: "1",
+		title: "Hosting Service Architecture",
+		description: "Comprehensive architecture diagram showcasing the hosting service infrastructure with load balancing, container orchestration, and scalable deployment strategies.",
+		image: "/diagrams/hostingServiceArchitecture.png",
+		project: "Cloud Hosting Platform",
+		tags: ["Hosting", "Infrastructure", "Scalability", "Load Balancing"],
+	},
+	{
+		id: "2",
+		title: "SCS Cloud Architecture",
+		description: "Complete cloud infrastructure architecture demonstrating multi-tier application deployment, security layers, and cloud-native services integration.",
+		image: "/diagrams/scsCloud.png",
+		project: "SCS Cloud Platform",
+		tags: ["Cloud", "AWS", "Multi-tier", "Security"],
+	},
+	{
+		id: "3",
+		title: "Transcoding Service Architecture",
+		description: "Real-time video transcoding pipeline architecture with queue management, parallel processing, and adaptive bitrate streaming capabilities.",
+		image: "/diagrams/trascodingServiceArchitecture.png",
+		project: "Media Processing Platform",
+		tags: ["Video", "Transcoding", "Queue", "Streaming"],
+	},
+];
+
+const Diagrams = () => {
+	const [selectedDiagram, setSelectedDiagram] = useState<Diagram | null>(null);
+
+	return (
+		<>
+			<motion.div variants={textVariant()}>
+				<p className="sectionSubText text-center">System Design & Architecture</p>
+				<h2 className="sectionHeadText text-center">Technical Diagrams.</h2>
+			</motion.div>
+
+			<div className="w-full flex justify-center">
+				<motion.p
+					variants={fadeIn("", "", 0.1, 1)}
+					className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] text-center"
+				>
+					Visual representations of my application architectures, system designs, and technical workflows.
+					Created with Eraser.io to showcase the thought process behind building scalable applications.
+				</motion.p>
+			</div>
+
+			<div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+				{diagrams.map((diagram, index) => (
+					<motion.div
+						key={diagram.id}
+						variants={fadeIn("up", "spring", index * 0.1, 0.75)}
+						onClick={() => setSelectedDiagram(diagram)}
+						className="cursor-pointer"
+					>
+						<Tilt
+							className="bg-tertiary p-5 rounded-2xl w-full h-full"
+							tiltMaxAngleX={10}
+							tiltMaxAngleY={10}
+						>
+							<div className="relative w-full h-[230px]">
+								<img
+									src={diagram.image}
+									alt={diagram.title}
+									className="w-full h-full object-cover rounded-2xl"
+									onError={(e) => {
+										// Fallback to placeholder if image not found
+										(e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='230' viewBox='0 0 400 230'%3E%3Crect fill='%23151030' width='400' height='230'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23915EFF'%3EAdd diagram here%3C/text%3E%3C/svg%3E";
+									}}
+								/>
+								<div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+									<div className="bg-black-100 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer">
+										<svg
+											className="w-5 h-5 text-white"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth={2}
+												d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+											/>
+										</svg>
+									</div>
+								</div>
+							</div>
+
+							<div className="mt-5">
+								<h3 className="text-white font-bold text-[24px]">{diagram.title}</h3>
+								<p className="mt-2 text-secondary text-[14px] leading-[22px]">
+									{diagram.description}
+								</p>
+								<p className="mt-2 text-[#915EFF] text-[12px] font-semibold">
+									Project: {diagram.project}
+								</p>
+							</div>
+
+							<div className="mt-4 flex flex-wrap gap-2">
+								{diagram.tags.map((tag) => (
+									<span
+										key={tag}
+										className="text-[12px] bg-black-200 text-[#915EFF] px-3 py-1 rounded-full"
+									>
+										#{tag}
+									</span>
+								))}
+							</div>
+						</Tilt>
+					</motion.div>
+				))}
+			</div>
+
+			{/* Lightbox Modal */}
+			{selectedDiagram && (
+				<div
+					className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+					onClick={() => setSelectedDiagram(null)}
+				>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.8 }}
+						animate={{ opacity: 1, scale: 1 }}
+						exit={{ opacity: 0, scale: 0.8 }}
+						className="relative max-w-6xl w-full bg-tertiary rounded-2xl p-6"
+						onClick={(e) => e.stopPropagation()}
+					>
+						<button
+							onClick={() => setSelectedDiagram(null)}
+							className="absolute top-4 right-4 bg-black-100 text-white rounded-full p-2 hover:bg-[#915EFF] transition-all z-10"
+						>
+							<svg
+								className="w-6 h-6"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</button>
+
+						<div className="max-h-[80vh] overflow-auto">
+							<img
+								src={selectedDiagram.image}
+								alt={selectedDiagram.title}
+								className="w-full h-auto rounded-lg"
+							/>
+							<div className="mt-6">
+								<h2 className="text-white font-bold text-[28px]">
+									{selectedDiagram.title}
+								</h2>
+								<p className="mt-2 text-secondary text-[16px] leading-[26px]">
+									{selectedDiagram.description}
+								</p>
+								<p className="mt-3 text-[#915EFF] text-[14px] font-semibold">
+									Project: {selectedDiagram.project}
+								</p>
+								<div className="mt-4 flex flex-wrap gap-2">
+									{selectedDiagram.tags.map((tag) => (
+										<span
+											key={tag}
+											className="text-[14px] bg-black-200 text-[#915EFF] px-4 py-2 rounded-full"
+										>
+											#{tag}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					</motion.div>
+				</div>
+			)}
+		</>
+	);
+};
+
+export default SectionWrapper(Diagrams, "diagrams");

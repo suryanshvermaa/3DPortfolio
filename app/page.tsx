@@ -9,8 +9,10 @@ import {
 	Works,
 	StarsCanvas,
 	Stats,
+	Diagrams,
 } from "./components";
 import Chatbot from "./components/Chatbot";
+import ShareButtons from "./components/ShareButtons";
 
 export default function Home() {
 	return (
@@ -24,12 +26,14 @@ export default function Home() {
 			<Tech />
 			<Works />
 			<Stats />
+			<Diagrams />
 			<Feedbacks />
 			<div className="relative z-0">
 				<Contact />
 				<StarsCanvas />
 			</div>
 			<Chatbot />
+			<ShareButtons />
 		</div>
 	);
 }
