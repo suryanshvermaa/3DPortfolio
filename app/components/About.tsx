@@ -47,17 +47,17 @@ const About = () => {
 		<>
 			<motion.div variants={textVariant()}>
 				<p className="sectionSubText">Introduction</p>
-				<h2 className="styles.sectionHeadText">Overview.</h2>
+				<h2 className="sectionHeadText">Overview.</h2>
 			</motion.div>
 
 			<motion.p
 				variants={fadeIn("", "", 0.1, 1)}
-				className="mt-4 text-secondary text-[17px] max-w-[3xl] leading-[30px]"
+				className="mt-4 text-secondary text-[16px] sm:text-[17px] max-w-3xl leading-relaxed"
 			>
 				I’m <span className="text-white font-semibold">Suryansh Verma</span>, a
 				<strong className="text-white"> Full-Stack Developer & Cloud/DevOps Engineer</strong> passionate about designing scalable, distributed, cloud-native systems using Node.js, Golang, C++, Docker, Kubernetes, and AWS. I love building production-ready platforms that blend elegant backend design with robust infrastructure & automation. Currently exploring Golang, Microservice Architecture & Generative AI while contributing to open-source and crafting developer-first tools. Open to internships and collaboration on cloud, backend, or DevOps projects.
 			</motion.p>
-			<div className="mt-20 flex flex-wrap gap-10">
+			<div className="mt-20 flex flex-wrap gap-10 justify-center">
 				{services.map((service, index) => (
 					<ServiceCard key={service.title} index={index} {...service} />
 				))}

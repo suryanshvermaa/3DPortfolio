@@ -1,13 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		// Detect mobile screens where navbar collapses (below 640px / sm breakpoint)
+		const mq = window.matchMedia("(max-width: 639px)");
+		const apply = () => setIsMobile(mq.matches);
+		apply();
+		mq.addEventListener("change", apply);
+		return () => mq.removeEventListener("change", apply);
+	}, []);
+
 	return (
-		<section className="relative w-full h-screen mx-auto">
-			<div className="paddingX absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5">
+		<section className="relative w-full h-[calc(100svh-0px)] mx-auto">
+			<div className={`paddingX absolute inset-0 top-24 sm:top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
 				<div className="flex flex-col justify-center items-center mt-5">
 					<div className="w-5 h-5 rounded-full bg-[#915EFF] " />
 					<div className="w-1 sm:h-80 h-40 violet-gradient" />
@@ -33,8 +44,13 @@ const Hero = () => {
 					</div>
 				</div>
 			</div>
-			<ComputersCanvas />
-			<div className="absolute xs:bottom-2 bottom-32 w-full flex justify-center items-center">
+			{isMobile && (
+				<div className="absolute left-0 right-0 top-[280px] xs:top-[320px] h-[400px] xs:h-[450px]">
+					<ComputersCanvas />
+				</div>
+			)}
+			{!isMobile && <ComputersCanvas />}
+			<div className="absolute xs:bottom-3 bottom-24 w-full flex justify-center items-center">
 				<a href="#about">
 					<div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
 						<motion.div

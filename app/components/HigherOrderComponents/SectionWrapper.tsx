@@ -11,13 +11,10 @@ const SectionWrapper = (Component: FC, idName: string) => {
 				initial="hidden"
 				whileInView="show"
 				exit="hidden"
-				viewport={{ once: true, amount: 0.25 }}
-				className="padding max-w-7xl mx-auto relative z-0"
+				viewport={{ once: true, amount: 0.1 }}
+				className="padding max-w-7xl mx-auto relative z-10 scroll-mt-[72px] sm:scroll-mt-24"
+				id={idName}
 			>
-				<span className="hash-span" id={idName}>
-					{" "}
-					&nbsp;{" "}
-				</span>
 				<Component />
 			</motion.div>
 		);

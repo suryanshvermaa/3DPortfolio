@@ -41,11 +41,7 @@
   color-scheme: dark;
 }
 
-.hash-span {
-  margin-top: -100px;
-  padding-bottom: 100px;
-  display: block;
-}
+.hash-span { display: none; }
 
 .black-gradient {
   background: #000000;
