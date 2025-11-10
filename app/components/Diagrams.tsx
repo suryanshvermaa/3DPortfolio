@@ -17,27 +17,27 @@ interface Diagram {
 const diagrams: Diagram[] = [
 	{
 		id: "1",
-		title: "Hosting Service Architecture",
-		description: "Comprehensive architecture diagram showcasing the hosting service infrastructure with load balancing, container orchestration, and scalable deployment strategies.",
+		title: "Static Website Hosting Architecture",
+		description: "Cloud-native hosting service architecture with CDN integration for deploying React/Vite static applications. Features automated build pipelines and global content delivery.",
 		image: "/diagrams/hostingServiceArchitecture.png",
-		project: "Cloud Hosting Platform",
-		tags: ["Hosting", "Infrastructure", "Scalability", "Load Balancing"],
+		project: "SCS Cloud Platform",
+		tags: ["Hosting", "CDN", "Static Sites", "React"],
 	},
 	{
 		id: "2",
-		title: "SCS Cloud Architecture",
-		description: "Complete cloud infrastructure architecture demonstrating multi-tier application deployment, security layers, and cloud-native services integration.",
+		title: "SCS Cloud Platform Architecture",
+		description: "Complete microservices architecture for Suryansh Cloud Services (SCS) featuring HLS transcoding, static hosting, and S3-compatible object storage with Kubernetes orchestration.",
 		image: "/diagrams/scsCloud.png",
 		project: "SCS Cloud Platform",
-		tags: ["Cloud", "AWS", "Multi-tier", "Security"],
+		tags: ["Microservices", "Kubernetes", "Cloud", "AWS"],
 	},
 	{
 		id: "3",
-		title: "Transcoding Service Architecture",
-		description: "Real-time video transcoding pipeline architecture with queue management, parallel processing, and adaptive bitrate streaming capabilities.",
+		title: "HLS Video Transcoding Pipeline",
+		description: "Scalable video processing architecture converting 1080p source videos into adaptive HLS streams (1080p/720p/480p/360p) with master.m3u8 playlist generation for multi-platform playback.",
 		image: "/diagrams/trascodingServiceArchitecture.png",
-		project: "Media Processing Platform",
-		tags: ["Video", "Transcoding", "Queue", "Streaming"],
+		project: "SCS Cloud Platform",
+		tags: ["HLS", "Video Processing", "Transcoding", "Streaming"],
 	},
 ];
 
