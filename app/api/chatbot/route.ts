@@ -7,7 +7,8 @@ import {
     getSCSCloudDetails, 
     getContactInfo, 
     getGitHubStats,
-    getArchitectureDiagrams 
+    getArchitectureDiagrams, 
+    getEducationOverview
 } from "@/app/bot/functions";
 import { getSession, setSession } from "@/app/bot/sessions";
 import { systemPrompt } from "@/app/bot/system_prompt";
@@ -94,4 +95,5 @@ const availableFunctions: Record<string, Function> = {
     "getContactInfo": getContactInfo,
     "getGitHubStats": getGitHubStats,
     "getArchitectureDiagrams": getArchitectureDiagrams,
+    "getEducationOverview": getEducationOverview,
 } as const;

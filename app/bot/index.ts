@@ -64,6 +64,13 @@ export async function getGroqChatCompletion(messages: Groq.Chat.Completions.Chat
                     name: "getArchitectureDiagrams",
                     description: "Describes the architecture diagrams available in the portfolio including hosting architecture, SCS Cloud Platform design, and HLS transcoding pipeline."
                 }
+            },
+            {
+                type: "function",
+                function:{
+                    name:"getEducationOverview",
+                    description:"Provides an overview of Suryansh's educational background including degrees, institutions, and relevant coursework."
+                }
             }
         ]
     });

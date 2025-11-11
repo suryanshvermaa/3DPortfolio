@@ -165,3 +165,16 @@ export function getArchitectureDiagrams(): string {
     'Visit the **Architecture section** to view all diagrams in detail!',
   ].join('\n');
 }
+
+export function getEducationOverview(): string {
+  return [
+    '🎓 Education & Certifications:',
+    '',
+    'Suryansh currently pursues a Bachelor\'s degree in Electrical Engineering from NIT Patna.',
+    '• Expected Graduation: 2027',
+    '• Relevant Coursework: Data Structures, Algorithms, Computer Networks, Database Management',
+    '• Certifications: Completed various online courses in Full-Stack Development, Cloud Computing, and DevOps from YouTube.',
+    '',
+    'Check the Education section in the portfolio for detailed information on degrees and certifications earned!',
+  ].join('\n');
+}
