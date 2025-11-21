@@ -4,13 +4,13 @@ import { authOptions } from "@/lib/auth";
 import { uploadToS3 } from "@/lib/s3";
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  
-  if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const formData = await req.formData();
     const file = formData.get("file") as File;
     const folder = formData.get("folder") as string || "uploads";
@@ -36,8 +36,11 @@ export async function POST(req: NextRequest) {
       key: key,
       message: "File uploaded successfully" 
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Upload error:", error);
-    return NextResponse.json({ error: "Failed to upload file" }, { status: 500 });
+    return NextResponse.json({ 
+      error: "Failed to upload file",
+      details: error.message 
+    }, { status: 500 });
   }
 }

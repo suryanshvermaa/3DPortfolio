@@ -153,12 +153,20 @@ export default function VideosManagement() {
       });
 
       const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || data.details || "Upload failed");
+      }
+      
       if (data.url) {
         setFormData((prev) => ({ ...prev, videoUrl: data.url }));
+        alert("Video uploaded successfully!");
+      } else {
+        throw new Error("No URL returned from upload");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Video upload failed:", error);
-      alert("Failed to upload video");
+      alert(`Failed to upload video: ${error.message}`);
     } finally {
       setUploading(false);
     }
@@ -187,12 +195,20 @@ export default function VideosManagement() {
       });
 
       const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || data.details || "Upload failed");
+      }
+      
       if (data.url) {
         setFormData((prev) => ({ ...prev, thumbnail: data.url }));
+        alert("Thumbnail uploaded successfully!");
+      } else {
+        throw new Error("No URL returned from upload");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Thumbnail upload failed:", error);
-      alert("Failed to upload thumbnail");
+      alert(`Failed to upload thumbnail: ${error.message}`);
     } finally {
       setUploadingThumbnail(false);
     }
