@@ -13,6 +13,10 @@ A production-ready, full-stack portfolio application with 3D animations, admin p
 
 ![Portfolio Preview](https://suryanshvermaa.s3.ap-south-1.amazonaws.com/HomePage.png)
 
+### Admin Panel Preview
+
+![Admin Panel](https://suryanshvermaa.s3.ap-south-1.amazonaws.com/porfolioAdmin.png)
+
 ---
 
 ## ✨ What Makes This Different?
