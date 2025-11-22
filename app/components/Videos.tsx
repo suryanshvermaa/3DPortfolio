@@ -32,6 +32,16 @@ const VideoCard = ({
 	tags,
 }: VideoCardProps) => {
 	const [isPlaying, setIsPlaying] = React.useState(false);
+	const [thumbnailError, setThumbnailError] = React.useState(false);
+
+	React.useEffect(() => {
+		if (thumbnail) {
+			console.log('Thumbnail URL:', thumbnail);
+		}
+		if (videoUrl) {
+			console.log('Video URL:', videoUrl);
+		}
+	}, [thumbnail, videoUrl]);
 
 	return (
 		<motion.div
@@ -48,11 +58,16 @@ const VideoCard = ({
 									className="relative w-full h-full cursor-pointer group"
 									onClick={() => setIsPlaying(true)}
 								>
-									{thumbnail ? (
+									{thumbnail && !thumbnailError ? (
 										<img
 											src={thumbnail}
 											alt={title}
 											className="w-full h-full object-cover"
+											onError={(e) => {
+												console.error('Failed to load thumbnail:', thumbnail);
+												setThumbnailError(true);
+											}}
+											crossOrigin="anonymous"
 										/>
 									) : (
 										<div className="w-full h-full bg-gradient-to-br from-purple-900 to-blue-900 flex items-center justify-center">
@@ -85,6 +100,10 @@ const VideoCard = ({
 									controls
 									autoPlay
 									className="w-full h-full object-cover"
+									onError={(e) => {
+										console.error('Failed to load video:', videoUrl);
+									}}
+									crossOrigin="anonymous"
 								>
 									<source src={videoUrl} type="video/mp4" />
 									Your browser does not support the video tag.

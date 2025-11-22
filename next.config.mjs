@@ -34,6 +34,18 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 's3.tebi.io',
 			},
+			{
+				protocol: 'https',
+				hostname: '**.s3.tebi.io', // Allow all subdomains for Tebi S3
+			},
+			{
+				protocol: 'https',
+				hostname: '**.s3.amazonaws.com', // Allow AWS S3 buckets
+			},
+			{
+				protocol: 'https',
+				hostname: '**.s3.*.amazonaws.com', // Allow regional AWS S3 buckets
+			},
 		],
 	},
 };
