@@ -23,10 +23,22 @@ const Diagrams = () => {
 		const fetchDiagrams = async () => {
 			try {
 				const response = await fetch("/api/diagrams");
-				const data = await response.json();
-				setDiagrams(data);
+				if (response.ok) {
+					const data = await response.json();
+					// Ensure data is an array before setting state
+					if (Array.isArray(data)) {
+						setDiagrams(data);
+					} else {
+						console.error("Invalid diagrams data format:", data);
+						setDiagrams([]);
+					}
+				} else {
+					console.error("Failed to fetch diagrams - HTTP error:", response.status);
+					setDiagrams([]);
+				}
 			} catch (error) {
 				console.error("Failed to fetch diagrams:", error);
+				setDiagrams([]);
 			} finally {
 				setLoading(false);
 			}
@@ -43,6 +55,10 @@ const Diagrams = () => {
 				<DiagramCardSkeleton />
 			</div>
 		);
+	}
+
+	if (diagrams.length === 0) {
+		return null; // Don't render section if no diagrams
 	}
 
 	return (
