@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "./HigherOrderComponents";
 
@@ -34,6 +34,21 @@ const VideoCard = ({
 }: VideoCardProps) => {
 	const [isPlaying, setIsPlaying] = React.useState(false);
 	const [thumbnailError, setThumbnailError] = React.useState(false);
+
+	const videoRef = useRef<HTMLVideoElement | null>(null);
+
+	useEffect(() => {
+		if (isPlaying && videoRef.current) {
+			videoRef.current
+				.play()
+				.then(() => {
+					// playback started
+				})
+				.catch((err) => {
+					console.warn('Video play prevented or failed:', err);
+				});
+		}
+	}, [isPlaying]);
 
 	React.useEffect(() => {
 		if (thumbnail) {
@@ -72,6 +87,7 @@ const VideoCard = ({
 											crossOrigin="anonymous"
 											sizes="(max-width: 768px) 100vw, 50vw"
 											priority={index === 0}
+											unoptimized
 										/>
 									) : (
 										<div className="w-full h-full bg-gradient-to-br from-purple-900 to-blue-900 flex items-center justify-center">
@@ -101,13 +117,13 @@ const VideoCard = ({
 								</div>
 							) : (
 								<video
+									ref={videoRef}
 									controls
-									autoPlay
+									playsInline
 									className="w-full h-full object-cover"
 									onError={(e) => {
 										console.error('Failed to load video:', videoUrl);
 									}}
-									crossOrigin="anonymous"
 								>
 									<source src={videoUrl} type="video/mp4" />
 									Your browser does not support the video tag.
