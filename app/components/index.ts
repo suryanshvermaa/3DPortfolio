@@ -11,6 +11,7 @@ import Contact from './Contact';
 import Stats from './Stats';
 import Diagrams from './Diagrams';
 import Videos from './Videos';
+import Articles from './Articles';
 import { 
   SkeletonLoader, 
   ProjectCardSkeleton, 
@@ -35,6 +36,7 @@ export {
   Stats,
   Diagrams,
   Videos,
+  Articles,
   EarthCanvas, 
   BallCanvas, 
   ComputersCanvas, 

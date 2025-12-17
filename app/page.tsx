@@ -13,6 +13,7 @@ import {
 	Stats,
 	Diagrams,
 	Videos,
+	Articles,
 } from "./components";
 import Chatbot from "./components/Chatbot";
 import ShareButtons from "./components/ShareButtons";
@@ -61,6 +62,7 @@ export default function Home() {
 			<About />
 			<Experience isLoaded={isLoaded} />
 			<Tech isLoaded={isLoaded} />
+			<Articles />
 			<Works />
 			<Videos />
 			<Stats />
